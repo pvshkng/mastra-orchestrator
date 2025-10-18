@@ -24,6 +24,8 @@ export const mastra = new Mastra({
     default: { enabled: true },
   },
   server: {
+    build: { swaggerUI: false, apiReqLogs: false, openAPIDocs: false },
+
     middleware: [
       {
         handler: async (c, next) => {
@@ -37,6 +39,15 @@ export const mastra = new Mastra({
           await next();
         },
         path: "/api/*",
+      },
+      {
+        handler: async (c, next) => {
+          if (process.env.environment !== "DEVELOPMENT") {
+            return new Response("Unauthorized", { status: 401 });
+          }
+          await next();
+        },
+        path: "/agents/*",
       },
       // Add a global request logger
       async (c, next) => {
