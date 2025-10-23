@@ -21,9 +21,9 @@ export const weatherAgent = new Agent({
 `,
   model: "google/gemini-2.5-pro",
   tools: { weatherTool },
-  // memory: new Memory({
-  //   storage: new LibSQLStore({
-  //     url: "file:../mastra.db", // path is relative to the .mastra/output directory
-  //   }),
-  // }),
+  memory: new Memory({
+    storage: new LibSQLStore({
+      url: "file:../mastra.db", // path is relative to the .mastra/output directory
+    }),
+  }),
 });

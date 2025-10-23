@@ -16,10 +16,10 @@ export const mastra = new Mastra({
   deployer: deployer,
   workflows: { weatherWorkflow },
   agents: { weatherAgent },
-  // storage: new LibSQLStore({
-  //   // stores observability, scores, ... into memory storage, if it needs to persist, change to file:../mastra.db
-  //   url: ":memory:",
-  // }),
+  storage: new LibSQLStore({
+    // stores observability, scores, ... into memory storage, if it needs to persist, change to file:../mastra.db
+    url: ":memory:",
+  }),
   logger: new PinoLogger({
     name: "Mastra",
     level: "info",
