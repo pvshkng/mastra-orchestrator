@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "installCommand": "npm install --omit=dev",
+  "builds": [
+    {
+      "src": "index.mjs",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["**"]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.mjs"
+    }
+  ]
+}
